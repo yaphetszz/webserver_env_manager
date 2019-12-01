@@ -1,0 +1,171 @@
+<html xmlns="http://www.w3.org/1999/xhtml"><head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="description" content="看不懂佛曰，来这里参悟人生的真谛吧">
+    <meta name="keywords" content="与佛论禅,佛曰,加密,解密,佛曰翻译器,如是我闻">
+    <style type="text/css">
+        #mainframe
+        {
+            margin: 0px auto;
+            width: 800px;
+            overflow: hidden;
+            display: block;
+            font-size: 12px;
+        }
+        #origMsg, #afterMsg
+        {
+            width: 600px;
+            overflow-y: auto;
+            display: block;
+            resize: none;
+            margin: 0 100px;
+        }
+        #origMsg
+        {
+            height: 80px;
+        }
+        #afterMsg
+        {
+            height: 280px;
+        }
+        input.Btn
+        {
+            cursor: pointer;
+            padding: 5px;
+            font-size: 15px;
+        }
+        body, p, div.centerBlk
+        {
+            text-align: center;
+        }
+        p.title
+        {
+            font-size: 200%;
+            font-weight: bold;
+            font-family: 微软雅黑,黑体;
+            margin:15px;
+        }
+        p.helptext
+        {
+            text-align:left;
+            font-size: 15px;
+            line-height:1.5em;
+            text-indent: 2em;
+
+        }
+        textarea
+        {
+            padding: 5px;
+            font-size: 12px;
+            outline: none;
+            text-shadow: 0px 1px 0px #fff;
+            -webkit-border-radius: 3px;
+            -moz-border-radius: 3px;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+            -webkit-transition: .3s ease-in-out;
+            -moz-transition: .3s ease-in-out;
+            -o-transition: .3s ease-in-out;
+        }
+
+        textarea:focus
+        {
+            border: 1px solid #fafafa;
+            -webkit-box-shadow: 0px 0px 6px #007eff;
+            -moz-box-shadow: 0px 0px 5px #007eff;
+            box-shadow: 0px 0px 5px #007eff;
+        }
+        textarea::-webkit-input-placeholder
+        {
+            color: #999;
+            -webkit-transition: color.5s;
+        }
+        textarea:focus::-webkit-input-placeholder, textarea:hover::-webkit-input-placeholder
+        {
+            color: #c2c2c2;
+            -webkit-transition: color.5s;
+        }
+        .centerBlk
+        {
+            margin: 10px 0px;
+            float: left;
+            text-align: left;
+            padding: 0 100px;
+        }
+        #hintMsg
+        {
+            clear: both;
+        }
+        .helpBlk
+        {
+            float: right;
+            margin: 10px 0px;
+            padding: 0 100px;
+        }
+        .img
+        {
+            border: 0px;
+        }
+        .black_overlay
+        {
+            display: none;
+            position: absolute;
+            top: 0%;
+            left: 0%;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 1001;
+            -moz-opacity: 0.75;
+            opacity: .75;
+            filter: alpha(opacity=75);
+        }
+        .white_content
+        {
+            display: none;
+            padding: 10px;
+            position: absolute;
+            top: 15%;
+            left: 25%;
+            width: 632px;
+            height: 445px;
+            border: 2px solid #007eff;
+            border-radius: 8px;
+            background-color: white;
+            z-index: 1002;
+            overflow: auto;
+        }
+    </style>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#tudouEncode").click(function () {
+                $.post("encode", $("#origMsg").val(), function (data) {
+                    $("#afterMsg").val(data);
+                });
+            });
+            $("#tudouDecode").click(function () {
+                $.post("decode", $("#origMsg").val(), function (data) {
+                    $("#afterMsg").val(data);
+                });
+            });
+        });
+    </script>
+    <title>与佛论禅</title>
+</head>
+<body>
+    <div id="mainframe">
+        <p class="title" id="FoTitle">
+            与佛论禅
+        </p>
+        <textarea id="origMsg" placeholder="施主，此次前来，不知有何贵干？" rows="5"></textarea>
+        <div class="centerBlk">
+            <input class="Btn" type="button" id="tudouEncode" value="听佛说宇宙的真谛">
+            <input class="Btn" type="button" id="tudouDecode" value="参悟佛所言的真意">
+        </div>
+        <p id="hintMsg">
+            面对这个纷繁复杂的世界，<br>
+            真米神会如何作答呢……</p>
+        <textarea id="afterMsg" placeholder="佛家妙语" rows="5"></textarea>
+    </div>
+
+</div></body></html>
